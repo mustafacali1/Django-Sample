@@ -1,0 +1,31 @@
+
+
+{% extends 'base.html' %}
+
+
+{% block title %}Create Room{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-2">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Create Room</div>
+                </div>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        {% bootstrap_form form % }
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'welcome' %}" class="btn btn-sm btn-primary me-2 ms-2 float-end">Back to Home</a>
+                        <button type="submit" class="btn btn-sm btn-success me-2 ms-2 float-end">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

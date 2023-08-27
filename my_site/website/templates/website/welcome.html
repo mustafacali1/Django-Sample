@@ -1,0 +1,69 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-2 ms-auto me-auto">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{{ message }}</h3>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    There are currently <strong>{{ num_meeting }} meetings.</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="row mt-2 ms-auto me-auto">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Meeting List</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-sm table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Date</th>
+                                    <th>Detail</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for meeting in meetings %}
+                                <tr>
+                                    <td>{{ meeting.title }}</td>
+                                    <td>{{ meeting.date }}</td>
+                                    <td>
+                                        <a href="{% url 'meeting_detail' meeting.id %}" class="btn btn-sm btn-info">Detail</a>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-warning">Update</a>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-sm btn-success float-end">Create New One</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

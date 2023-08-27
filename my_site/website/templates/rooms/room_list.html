@@ -1,0 +1,54 @@
+
+
+
+{% extends 'base.html' %}
+
+{% block title %}Rooms{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-2 ms-auto me-auto">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Room List</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-sm table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Detail</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for room in rooms %}
+                                <tr>
+                                    <td>{{ room.name }}</td>
+                                    <td>
+                                        <a href="{% url 'room_detail' room.id %}" class="btn btn-sm btn-info">Detail</a>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-warning">Update</a>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'welcome' %}" class="btn btn-sm btn-success float-end">Back Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
